@@ -10,45 +10,37 @@ import './RecordNameList.css';
   return (
     <Container>
     {this.props.dataForm.length >0?
-        <ListGroup className="recordname-list">
-  
-      <Row>
-              <Col xs="3">
+        <ListGroup className="recordname-list">  
+            <Row>
+             <Col xs="4">
                 <span><strong>Name</strong></span>
               </Col>
-              <Col xs="3">
-                <span><strong>SurName</strong></span>
-              </Col>
-              <Col xs="3">
+              <Col xs="4">
                 <span><strong>Country</strong></span>
               </Col>
-              <Col xs="3">
-                <span><strong>Birthday</strong></span>
+              <Col xs="4">
+                <span><strong>DOB</strong></span>
               </Col>
             </Row>
-      <ListGroupItem
-        className="visitor">    
-        <Row>
-          <Col xs="3">
-            <span>{this.props.dataForm[0].name}</span>
-          </Col>
-          <Col xs="3">
-            <span>{this.props.dataForm[0].surname} </span>
-          </Col>
-          <Col xs="4">
-            <span>{this.props.dataForm[0].country}</span>
-          </Col>
-          <Col xs="2">
-            <span> {this.props.dataForm[0].dob}</span>
-          </Col>
-        </Row>
-      
-      </ListGroupItem>      
-    </ListGroup>
-     :
-     <ListGroup >
-       <Label >Any Greeting</Label>
-     </ListGroup>}
+          <ListGroupItem>    
+            <Row>
+              <Col xs="4">
+                <span>{this.props.dataForm[0].name} {this.props.dataForm[0].surname}</span>
+              </Col>
+              <Col xs="4">
+                <span>{this.props.dataForm[0].country}</span>
+              </Col>
+              <Col xs="4">
+                <span> {this.props.dataForm[0].dob}</span>
+              </Col>
+            </Row>          
+          </ListGroupItem>      
+        </ListGroup>
+        :
+        <ListGroup >
+          <Label >Any Greeting yet</Label>
+        </ListGroup>
+    }
      </Container>
   )
 }

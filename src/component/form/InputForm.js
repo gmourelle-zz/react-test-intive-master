@@ -34,7 +34,7 @@ class InputForm extends React.Component {
 
   render() {
 
-    let countries = this.props.state.countries;
+    let countries = this.props.dataForm.countries;
 
     return (
       <Form>
@@ -49,7 +49,7 @@ class InputForm extends React.Component {
                   onChange={e => this.handleChange("name", e)}
                 type="text" name="user_name" id="name" />
             </Col>
-            </Row>
+          </Row>
         </FormGroup>
         <FormGroup>
             <Row>
@@ -66,10 +66,10 @@ class InputForm extends React.Component {
         </FormGroup>
         <FormGroup>
             <Row>          
-                <Col  xs="2">
+                <Col xs="2">
                   <Label className="float-right col-form-label" for="country">Countries</Label>
                 </Col>
-                <Col  xs="10">
+                <Col xs="10">
                   <Input
                     value={this.state.country}
                     onChange={e => this.handleChange("country", e)}
@@ -83,13 +83,13 @@ class InputForm extends React.Component {
         <FormGroup>
             <Row>          
                 <Col  xs="2">
-                  <Label className="float-right col-form-label" for="edad">Birthday</Label>
+                  <Label className="float-right col-form-label" for="edad">DOB</Label>
                 </Col>
                 <Col  xs="10">            
                   <Input
                     value={this.state.dob}
                     onChange={e => this.handleChange("dob", e)}
-                    type="text" name="age" id="age" />
+                    type="date" name="age" id="age" />
                 </Col>
             </Row>
         </FormGroup>

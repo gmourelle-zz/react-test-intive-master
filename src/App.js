@@ -12,9 +12,8 @@ class App extends Component {
     super();
     this.state = {
         countries: [],
-        dataFormulario: []
+        dataForm: []
     };
-
 }
 
 componentDidMount() {
@@ -35,7 +34,7 @@ componentDidMount() {
 
 handleSubmit (dataForm) {
   this.setState({
-    dataFormulario: [dataForm]
+    dataForm: [dataForm]
   });
 }
 
@@ -54,24 +53,24 @@ renderGreeting(selected) {
           <h1>Intive - FDV Exercise</h1>          
         </header>
         <Container>
-        <Row>
-        <Col xs="6">          
-        <InputForm state={this.state}
-        onHandleSubmit={this.handleSubmit.bind(this)}/>     
-        <Col xs="12">           
-              {this.renderGreeting(this.state.dataFormulario)}
-          </Col>
-        </Col>
-        <Col xs="6">
-         <RecordNameList dataForm={this.state.dataFormulario}/>
-         </Col>
-      </Row>
-      </Container>
-        <footer className="App-footer">
-        <div className="float-right">       
-          <span>Guido Mourelle</span>
-        </div>
-        </footer>
+          <Row>
+            <Col xs="6">          
+              <InputForm dataForm={this.state}
+              onHandleSubmit={this.handleSubmit.bind(this)}/>     
+              <Col xs="12">           
+                    {this.renderGreeting(this.state.dataForm)}
+              </Col>
+            </Col>
+            <Col xs="6">
+              <RecordNameList dataForm={this.state.dataForm}/>
+            </Col>        
+          </Row>
+          <footer className="App-footer">
+            <div className="float-right">       
+              <span>Guido Mourelle</span>
+            </div>
+          </footer>
+        </Container>        
       </div>
     );
   }
