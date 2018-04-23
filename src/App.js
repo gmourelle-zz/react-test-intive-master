@@ -1,18 +1,18 @@
 import React, { Component } from 'react'; 
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Label, Input } from 'reactstrap';
 import './App.css';
 import InputForm from './component/form/InputForm';
-import RecordNameList from './component/recordNameList/RecordNameList';
+import VisitorList from './component/visitorList/VisitorList';
 import Greeting from './component/greetings/Greeting';
-import { Row, Col } from 'reactstrap';
-import { Container } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
         countries: [],
-        dataForm: []
+        dataForm: [],
+        currentUser:{}
     };
 }
 
@@ -32,15 +32,19 @@ componentDidMount() {
   });
 }
 
-handleSubmit (dataForm) {
-  this.setState({
-    dataForm: [dataForm]
-  });
+handleSubmit (data) {
+
+    const dataFormCopy = this.state.dataForm.slice();
+    dataFormCopy.push(data);
+
+    this.setState({
+      dataForm: dataFormCopy,
+      currentUser:data
+    });
 }
 
 renderGreeting(selected) {
   if (Object.keys(selected).length === 0) return;
-
   return (
     <Greeting dataForm={selected}/>
   )
@@ -55,14 +59,16 @@ renderGreeting(selected) {
         <Container>
           <Row>
             <Col xs="6">          
-              <InputForm dataForm={this.state}
-              onHandleSubmit={this.handleSubmit.bind(this)}/>     
+              <InputForm dataForm={this.state.dataForm}
+              countries={this.state.countries}
+              onHandleSubmit={this.handleSubmit.bind(this)}
+            />     
               <Col xs="12">           
-                    {this.renderGreeting(this.state.dataForm)}
+                    {this.renderGreeting(this.state.currentUser)}
               </Col>
             </Col>
             <Col xs="6">
-              <RecordNameList dataForm={this.state.dataForm}/>
+              <VisitorList dataForm={this.state.dataForm}/>
             </Col>        
           </Row>
           <footer className="App-footer">

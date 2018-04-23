@@ -1,7 +1,0 @@
-.recordname-list {
-  border: none;
-  cursor: pointer; }
-  .recordname-list.list-group-item {
-    padding: 5px 20px; }
-    .recordname-list.list-group-item:nth-child(odd) {
-      background-color: aliceblue; }

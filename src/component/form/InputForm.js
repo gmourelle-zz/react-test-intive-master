@@ -1,9 +1,7 @@
 import React from 'react';
-import { Col,Button, Form, FormGroup, Label, Input, Row } from 'reactstrap';
-
+import { Col, Button, Form, FormGroup, Label, Input, Row } from 'reactstrap';
 
 class InputForm extends React.Component {
-
 
   constructor(props) {
     super(props);
@@ -15,14 +13,10 @@ class InputForm extends React.Component {
     this.setState({ [inputValue]: event.target.value });
   }
 
-  handleOnBindData(e) {
-    e.preventDefault();
-    this.props.onBindData(this.state);
-  }
-
   handleSubmit(event) {
     event.preventDefault();
     this.props.onHandleSubmit(this.state);
+    
     this.setState({ name: '',surname:'', country: '', dob: '' });
   }
 
@@ -34,7 +28,7 @@ class InputForm extends React.Component {
 
   render() {
 
-    let countries = this.props.dataForm.countries;
+    let countries = this.props.countries;
 
     return (
       <Form>
@@ -82,10 +76,10 @@ class InputForm extends React.Component {
         </FormGroup>
         <FormGroup>
             <Row>          
-                <Col  xs="2">
-                  <Label className="float-right col-form-label" for="edad">DOB</Label>
+                <Col xs="2">
+                  <Label className="float-right col-form-label">DOB</Label>
                 </Col>
-                <Col  xs="10">            
+                <Col xs="10">            
                   <Input
                     value={this.state.dob}
                     onChange={e => this.handleChange("dob", e)}

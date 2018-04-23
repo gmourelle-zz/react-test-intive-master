@@ -1,0 +1,7 @@
+.visitor-list {
+  border: none;
+  cursor: pointer; }
+  .visitor-list.list-group-item {
+    padding: 5px 20px; }
+    .visitor-list.list-group-item:nth-child(odd) {
+      background-color: aliceblue; }
