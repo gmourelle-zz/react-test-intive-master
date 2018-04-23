@@ -37,5 +37,5 @@ class VisitorList extends React.Component {
      </Container>
   )
   }
-}
+} 
 export default VisitorList;
