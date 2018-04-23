@@ -1,10 +1,9 @@
 import React, { Component } from 'react'; 
-import { Label, Input } from 'reactstrap';
+import { Container, Row, Col} from 'reactstrap';
 import './App.css';
 import InputForm from './component/form/InputForm';
 import VisitorList from './component/visitorList/VisitorList';
 import Greeting from './component/greetings/Greeting';
-import { Container, Row, Col } from 'reactstrap';
 
 class App extends Component {
   constructor() {

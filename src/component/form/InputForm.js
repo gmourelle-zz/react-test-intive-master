@@ -90,7 +90,8 @@ class InputForm extends React.Component {
         <FormGroup>
           <Button
             onClick={e => this.handleSubmit(e)}
-            color="primary">
+            color="primary"
+            disabled={!this.state.name || !this.state.surname || !this.state.country || !this.state.dob}>
             Save
         </Button>
         </FormGroup>
