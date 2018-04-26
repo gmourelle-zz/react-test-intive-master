@@ -2,7 +2,10 @@ import React from 'react';
 import { Container, ListGroup, Row, Col, Label } from 'reactstrap';
 import './VisitorList.css';
 import Visitor from '../visitor/Visitor';
+import PropTypes from 'prop-types';
 
+
+  
 class VisitorList extends React.Component {
 
   render(){
@@ -38,4 +41,9 @@ class VisitorList extends React.Component {
   )
   }
 } 
+
+
+VisitorList.propTypes = {
+  dataForm: PropTypes.array.isRequired,
+};
 export default VisitorList;

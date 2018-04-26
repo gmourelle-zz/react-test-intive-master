@@ -1,8 +1,13 @@
 import React from 'react';
 import { Row, Col, ListGroupItem } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 import './Visitor.css';
 
+Visitor.propTypes = {
+    user: PropTypes.object.isRequired,
+};
+  
 
 function Visitor(props) {
   return (

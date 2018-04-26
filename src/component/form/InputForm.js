@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, Row } from 'reactstrap';
+import {PropTypes} from 'prop-types';
 
 class InputForm extends React.Component {
 
@@ -99,5 +100,11 @@ class InputForm extends React.Component {
     )
   }
 }
+
+InputForm.propTypes={
+  dataForm: PropTypes.array.isRequired,
+  countries: PropTypes.array.isRequired,
+  onHandleSubmit: PropTypes.func.isRequired,
+};
 
 export default InputForm;

@@ -1,6 +1,12 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+
 import "./Greeting.css";
+
+Greeting.propTypes = {
+  dataForm: PropTypes.object.isRequired,
+};
 
 function Greeting(props) {
 
