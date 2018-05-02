@@ -10,18 +10,18 @@ class InputForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);    
   }  
   
-  handleChange(inputValue, event) {
+  handleChange = (inputValue, event) => {
     this.setState({ [inputValue]: event.target.value });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.onHandleSubmit(this.state);
     
     this.setState({ name: '',surname:'', country: '', dob: '' });
   }
 
-  renderOptions(countries) {
+  renderOptions = (countries) => {
     return (
       countries.map(country => <option key={country.name}>{country.name}</option>)
     )
@@ -102,7 +102,6 @@ class InputForm extends React.Component {
 }
 
 InputForm.propTypes={
-  dataForm: PropTypes.array.isRequired,
   countries: PropTypes.array.isRequired,
   onHandleSubmit: PropTypes.func.isRequired,
 };

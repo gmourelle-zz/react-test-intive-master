@@ -31,8 +31,13 @@ componentDidMount() {
   });
 }
 
-handleSubmit (data) {
+handleSelectedUser = (selected) => {
+  this.setState({
+    currentUser:selected
+  });
+};
 
+handleSubmit = (data) => {
     const dataFormCopy = this.state.dataForm.slice();
     dataFormCopy.push(data);
 
@@ -42,7 +47,7 @@ handleSubmit (data) {
     });
 }
 
-renderGreeting(selected) {
+renderGreeting = (selected) => {
   if (Object.keys(selected).length === 0) return;
   return (
     <Greeting dataForm={selected}/>
@@ -58,16 +63,16 @@ renderGreeting(selected) {
         <Container>
           <Row>
             <Col xs="6">          
-              <InputForm dataForm={this.state.dataForm}
-              countries={this.state.countries}
-              onHandleSubmit={this.handleSubmit.bind(this)}
+              <InputForm  countries={this.state.countries}
+                          onHandleSubmit={this.handleSubmit.bind(this)}
             />     
               <Col xs="12">           
                     {this.renderGreeting(this.state.currentUser)}
               </Col>
             </Col>
             <Col xs="6">
-              <VisitorList dataForm={this.state.dataForm}/>
+              <VisitorList  dataForm={this.state.dataForm} 
+                onSelectedUser={this.handleSelectedUser}/>
             </Col>        
           </Row>
           <footer className="App-footer">

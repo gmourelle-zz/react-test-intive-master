@@ -4,46 +4,47 @@ import './VisitorList.css';
 import Visitor from '../visitor/Visitor';
 import PropTypes from 'prop-types';
 
+const VisitorList = (props) => {
 
-  
-class VisitorList extends React.Component {
+    const handleVisitorClick = (user) =>{
+      props.onSelectedUser(user);
+  };
 
-  render(){
-  return (
-    <Container>
-    {
-      this.props.dataForm.length ?    
-        <ListGroup className="visitor-list">  
-            <Row>
-             <Col xs="4">
-                <span><strong>Name</strong></span>
-              </Col>
+    return(
+      <Container>
+      {
+        props.dataForm.length ?    
+          <ListGroup className="visitor-list" >  
+              <Row>
               <Col xs="4">
-                <span><strong>Country</strong></span>
-              </Col>
-              <Col xs="4">
-                <span><strong>DOB</strong></span>
-              </Col>
-            </Row>
-            {this.props.dataForm.map((user, i) =>
-              <Visitor
-                key={i}
-                user={user}
-              />
-            )}
-        </ListGroup>
-        :
-          <ListGroup className="visitor-list">
-            <Label className="visitor-list-title">Any registered yet</Label>
+                  <span><strong>Name</strong></span>
+                </Col>
+                <Col xs="4">
+                  <span><strong>Country</strong></span>
+                </Col>
+                <Col xs="4">
+                  <span><strong>DOB</strong></span>
+                </Col>
+              </Row>
+              {props.dataForm.map((user, i) =>
+                <Visitor
+                  onVisitorClick={() => handleVisitorClick(user) }
+                  key={i}
+                  user={user}
+                />
+              )}
           </ListGroup>
-      }      
-     </Container>
-  )
-  }
-} 
-
+          :
+            <ListGroup className="visitor-list">
+              <Label className="visitor-list-title">Any registered yet</Label>
+            </ListGroup>
+        }      
+      </Container>
+    );
+}
 
 VisitorList.propTypes = {
   dataForm: PropTypes.array.isRequired,
 };
+
 export default VisitorList;

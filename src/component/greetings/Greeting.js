@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 
 import "./Greeting.css";
 
-Greeting.propTypes = {
-  dataForm: PropTypes.object.isRequired,
-};
-
-function Greeting(props) {
+const Greeting = (props) => {
 
   const today = moment();
   const currentAge = moment().diff(`${props.dataForm.dob}`, 'years');
@@ -21,5 +17,9 @@ function Greeting(props) {
     </h4>
   )
 }
+
+Greeting.propTypes = {
+  dataForm: PropTypes.object.isRequired,
+};
 
 export default Greeting;
