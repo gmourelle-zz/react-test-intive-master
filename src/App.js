@@ -11,7 +11,7 @@ class App extends Component {
           <h1>Greetings Demo</h1>
         </header>
         <div>
-          <GreetingsPage />          
+          <GreetingsPage />
         </div>
       </div>
     );

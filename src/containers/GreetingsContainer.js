@@ -1,12 +1,17 @@
 import React, { Component } from 'react'; 
 import { Container, Row, Col} from 'reactstrap';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import {createStore, applyMiddleware, compose} from 'redux';
+
+//import { bindActionCreators } from 'redux';
+//import { connect } from 'react-redux';
 //import './App.css';
 import InputForm from './../component/form/InputForm';
 import VisitorList from './../component/visitorList/VisitorList';
 import Greeting from './../component/greetings/Greeting';
 import {getCountries} from './../store/actions/register-action';
+
+const store = createStore(()=>{}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); //le pasamos el reducer como parametro
+
 
 class GreetingsContainer extends Component {
   constructor() {
@@ -31,7 +36,12 @@ componentDidMount() {
       this.setState({
         countries: initialCountries,
       });
+      const action = {type:'GET_COUNTRIES', value: initialCountries};
+  store.dispatch(action);
   });
+
+  const action = {type:'GET_COUNTRIES', value: initialCountries};
+  store.dispatch(action);
 }
 
 handleSelectedUser = (selected) => {
@@ -91,13 +101,13 @@ renderGreeting = (selected) => {
 
 //const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-const mapDispatchToProps = dispatch =>  {
-    return {
-        countries: country => dispatch(getCountries)
-    };
-};
+// const mapDispatchToProps = dispatch =>  {
+//     return {
+//         countries: country => dispatch(getCountries)
+//     };
+// };
 
-export default connect(null, mapDispatchToProps)(GreetingsContainer);
+//export default connect(null, mapDispatchToProps)(GreetingsContainer);
 
 
-//export default GreetingsContainer;
+export default GreetingsContainer;  
