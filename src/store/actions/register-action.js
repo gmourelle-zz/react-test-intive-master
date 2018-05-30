@@ -6,6 +6,7 @@ export const Actions = {
 };
 
 const get_Countries = payload => ({ type: Actions.GET_COUNTRIES, payload });
+//const get_Countries = payload => ({ type: Actions.GET_COUNTRIES, payload });
 
 const url='https://restcountries.eu/rest/v2/all';
 

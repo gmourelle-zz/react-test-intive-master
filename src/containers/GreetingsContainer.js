@@ -1,17 +1,12 @@
 import React, { Component } from 'react'; 
 import { Container, Row, Col} from 'reactstrap';
-import {createStore, applyMiddleware, compose} from 'redux';
-
-//import { bindActionCreators } from 'redux';
-//import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 //import './App.css';
 import InputForm from './../component/form/InputForm';
 import VisitorList from './../component/visitorList/VisitorList';
 import Greeting from './../component/greetings/Greeting';
-import {getCountries} from './../store/actions/register-action';
-
-const store = createStore(()=>{}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); //le pasamos el reducer como parametro
-
+import * as actions from './../store/actions/register-action';
 
 class GreetingsContainer extends Component {
   constructor() {
@@ -24,7 +19,7 @@ class GreetingsContainer extends Component {
 }
 
 componentDidMount() {
-
+  
   let initialCountries = [];
   fetch('https://restcountries.eu/rest/v2/all')
       .then(response => {
@@ -36,12 +31,13 @@ componentDidMount() {
       this.setState({
         countries: initialCountries,
       });
-      const action = {type:'GET_COUNTRIES', value: initialCountries};
-  store.dispatch(action);
-  });
-
-  const action = {type:'GET_COUNTRIES', value: initialCountries};
-  store.dispatch(action);
+      //get_Countries;
+      this.props.actions.getCountries(initialCountries);
+        //actions.get_Countries();
+          // const action = {type:'GET_COUNTRIES', value: initialCountries};
+          //store.dispatch(actions.get_Countries);
+          
+});
 }
 
 handleSelectedUser = (selected) => {
@@ -71,7 +67,7 @@ renderGreeting = (selected) => {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Intive - FDV Exercise</h1>          
+          <h1>Exercise</h1>          
         </header>
         <Container>
           <Row>
@@ -100,14 +96,20 @@ renderGreeting = (selected) => {
 }
 
 //const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
-
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+})
+// export default connect(
+//   null,
+//   mapDispatchToProps
+// )(GreetingsContainer)
 // const mapDispatchToProps = dispatch =>  {
 //     return {
 //         countries: country => dispatch(getCountries)
 //     };
 // };
 
-//export default connect(null, mapDispatchToProps)(GreetingsContainer);
+export default connect(null, mapDispatchToProps)(GreetingsContainer);
 
 
-export default GreetingsContainer;  
+//export default GreetingsContainer;
