@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col} from 'reactstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-//import './App.css';
+
 import InputForm from './../component/form/InputForm';
 import VisitorList from './../component/visitorList/VisitorList';
 import Greeting from './../component/greetings/Greeting';
@@ -19,25 +19,13 @@ class GreetingsContainer extends Component {
 }
 
 componentDidMount() {
-  
-  let initialCountries = [];
-  fetch('https://restcountries.eu/rest/v2/all')
-      .then(response => {
-          return response.json();
-      }).then(data => {
-        initialCountries = data.map((country) => {
-          return country
-      });
-      this.setState({
-        countries: initialCountries,
-      });
-      //get_Countries;
-      this.props.actions.getCountries(initialCountries);
-        //actions.get_Countries();
-          // const action = {type:'GET_COUNTRIES', value: initialCountries};
-          //store.dispatch(actions.get_Countries);
-          
-});
+
+    // if (this.props.countries.length === 0) {
+    //     this.props.actions.getCountries();
+    // }
+    
+        this.props.actions.getCountries();
+    console.log(this.props.countries);
 }
 
 handleSelectedUser = (selected) => {
@@ -95,21 +83,14 @@ renderGreeting = (selected) => {
   }
 }
 
-//const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)
-})
-// export default connect(
-//   null,
-//   mapDispatchToProps
-// )(GreetingsContainer)
-// const mapDispatchToProps = dispatch =>  {
-//     return {
-//         countries: country => dispatch(getCountries)
-//     };
-// };
+});
 
-export default connect(null, mapDispatchToProps)(GreetingsContainer);
+export function mapStateToProps({ greetings }) {
+    return {
+      countries:greetings.countries,
+    };
+}
 
-
-//export default GreetingsContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(GreetingsContainer);

@@ -13,18 +13,14 @@ const url='https://restcountries.eu/rest/v2/all';
 export const getCountries = payload =>{
 
     return dispatch =>{
-
-        //activar en el estado un indicador de busqueda de datos
-        //dispatch(getCountries);
         
         return fetch(url).then(
             data => ( data.json())
         ).then(country_data => {
-                //const forecastData = transformForecast(weather_data);
-                //const forecastData = transformForecast(weather_data);                
+                          
                 //modificar el estado con el resultado de la promise
-                //dispatch(setForecastData({city:payload,forecastData}));
-                dispatch(get_Countries);
+              
+                dispatch(get_Countries(country_data));
             });
     };
 };

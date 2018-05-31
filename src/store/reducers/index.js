@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import register from './reducer-register'
+import greetings from './reducer-register'
 
 
 const rootReducer = combineReducers({
-  register,
+    greetings,
 })
 
 export default rootReducer
