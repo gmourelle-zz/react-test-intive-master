@@ -12,7 +12,6 @@ class GreetingsContainer extends Component {
   constructor() {
     super();
     this.state = {
-        countries: [],
         dataForm: [],
         currentUser:{}
     };
@@ -20,12 +19,10 @@ class GreetingsContainer extends Component {
 
 componentDidMount() {
 
-    // if (this.props.countries.length === 0) {
-    //     this.props.actions.getCountries();
-    // }
-    
+    if (this.props.countries.length === 0) {
+        //this.props.actions.registerVisitorAction;
         this.props.actions.getCountries();
-    console.log(this.props.countries);
+    }
 }
 
 handleSelectedUser = (selected) => {
@@ -60,8 +57,9 @@ renderGreeting = (selected) => {
         <Container>
           <Row>
             <Col xs="6">          
-              <InputForm  countries={this.state.countries}
+              <InputForm  countries={this.props.countries}
                           onHandleSubmit={this.handleSubmit.bind(this)}
+                          onSave={this.props.actions.registerVisitorAction}
             />     
               <Col xs="12">           
                     {this.renderGreeting(this.state.currentUser)}
@@ -89,7 +87,9 @@ const mapDispatchToProps = dispatch => ({
 
 export function mapStateToProps({ greetings }) {
     return {
-      countries:greetings.countries,
+     // visitors: greetings.registrations,
+      countries: greetings,
+      //user: greetings.currentVisitor,
     };
 }
 

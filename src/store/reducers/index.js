@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import greetings from './reducer-register'
+import greetings from '../reducers/reducer-register'
 
 
 const rootReducer = combineReducers({
-    greetings,
+    greetings
 })
 
 export default rootReducer

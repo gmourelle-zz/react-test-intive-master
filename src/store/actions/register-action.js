@@ -6,20 +6,21 @@ export const Actions = {
 };
 
 const get_Countries = payload => ({ type: Actions.GET_COUNTRIES, payload });
-//const get_Countries = payload => ({ type: Actions.GET_COUNTRIES, payload });
 
+export const registerVisitorAction = payload =>({
+    
+      type: Actions.REGISTRATION_SAVE,
+      payload: payload    
+});
+  
 const url='https://restcountries.eu/rest/v2/all';
 
 export const getCountries = payload =>{
 
-    return dispatch =>{
-        
+    return dispatch =>{        
         return fetch(url).then(
             data => ( data.json())
-        ).then(country_data => {
-                          
-                //modificar el estado con el resultado de la promise
-              
+        ).then(country_data => {              
                 dispatch(get_Countries(country_data));
             });
     };

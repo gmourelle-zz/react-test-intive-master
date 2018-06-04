@@ -16,8 +16,9 @@ class InputForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onHandleSubmit(this.state);
-    
+    //this.props.onHandleSubmit(this.state);
+    const newVisitor = this.state;
+    this.props.onSave(newVisitor);
     this.setState({ name: '',surname:'', country: '', dob: '' });
   }
 
